@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Welcome, {{ student.name }}</h2>
+<p><strong>ID:</strong> {{ student.student_id }}</p>
+<p><strong>Email:</strong> {{ student.email }}</p>
+<p><strong>Class:</strong> {{ student.class }}</p>
+
+<hr>
+
+<h3>Courses</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Course</th><th>Instructor</th><th>Grade</th>
+    </tr>
+    {% for course in student.courses %}
+    <tr>
+        <td>{{ course.course_name }}</td>
+        <td>{{ course.instructor }}</td>
+        <td>{{ course.grade }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
+
+<h3>Notifications</h3>
+<ul>
+    {% for note in student.notifications %}
+    <li><strong>{{ note.date }}:</strong> {{ note.message }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
